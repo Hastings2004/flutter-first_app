@@ -3,19 +3,71 @@ import 'package:first_app/components/MyButton.dart';
 import 'package:first_app/components/MyTextfield.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
 
   void loginUser() async{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text, 
-      password: passwordController.text
+    showDialog(
+      context: context, 
+      builder: (context){
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
     );
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, 
+        password: passwordController.text
+      );
+
+       Navigator.pop(context);
+      }
+       on FirebaseAuthException catch (e) {
+         Navigator.pop(context);
+        if(e.code == 'user-not-found'){
+          wrongEmailMessage();
+        }
+        else if(e.code == 'wrong-password'){
+          wrongPasswordMessage();
+        }
+    }
+
+   
   }
+   void wrongEmailMessage(){
+    showDialog(
+      context: context, 
+      builder: (context){
+        return const AlertDialog(
+          title: Text(
+            "Incorect Email"
+          ),
+        );
+    },);
+   }
+
+   void wrongPasswordMessage(){
+    showDialog(
+      context: context, 
+      builder: (context){
+        return const AlertDialog(
+          title: Text(
+            "Incorect Email"
+          ),
+        );
+    });
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
