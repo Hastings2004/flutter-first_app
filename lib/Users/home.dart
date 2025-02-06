@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          "Welcome "+ user.email!,
+          "Welcome ${user.email!}",
           style: TextStyle(
             fontSize: 20
           ),
