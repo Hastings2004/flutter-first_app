@@ -71,11 +71,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey ,
+      backgroundColor: Colors.white ,
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
+              Image.asset(
+                "assets/img/logo.jpg",
+                height: 200
+              ),
               const SizedBox(height: 130),
               Text("Login Page", style:  TextStyle(
                 color: Colors.grey[700],
@@ -112,7 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ),
                 const SizedBox(height: 20),
-                Mybutton(onTap: loginUser)
+
+                Mybutton(onTap: loginUser, text: "Login",),
+
+                const SizedBox(height: 20),
+
+                
             ],
       ),
         )
