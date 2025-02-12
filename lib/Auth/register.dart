@@ -54,7 +54,7 @@ class Register extends StatelessWidget {
                     
                         const SizedBox(height: 20),
                         
-                        Mybutton(onTap: signUpUser, text: "Sign up",)
+                        Mybutton(onTap: signUpUser)
                     ],
                 ),
             )

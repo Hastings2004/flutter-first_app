@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     try {
+       Navigator.pop(context);
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, 
         password: passwordController.text
@@ -117,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                Mybutton(onTap: loginUser, text: "Login",),
+                Mybutton(onTap: loginUser),
 
                 const SizedBox(height: 20),
 

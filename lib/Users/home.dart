@@ -6,15 +6,25 @@ class Home extends StatelessWidget {
 
   final user  = FirebaseAuth.instance.currentUser!;
 
-
+ void logout(){
+   FirebaseAuth.instance.signOut();
+ }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: logout, 
+            icon: Icon(Icons.logout)
+            )
+        ],
+      ),
       body: Center(
         child: Text(
           "Welcome ${user.email!}",
-          style: TextStyle(
+           style: TextStyle(
             fontSize: 20
           ),
         ),
