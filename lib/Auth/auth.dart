@@ -15,7 +15,7 @@ class Auth extends StatelessWidget {
           if(snapshot.hasData){
             return Home();
           }else{
-            return LoginScreen();
+            return Auth();
           }
         }
       )

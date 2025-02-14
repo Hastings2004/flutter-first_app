@@ -1,10 +1,14 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/components/MyButton.dart';
 import 'package:first_app/components/MyTextfield.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final VoidCallback showRegisterScreen;
+  
+ const LoginScreen({super.key, required this.showRegisterScreen});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -122,7 +126,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 20),
 
-                
+                GestureDetector(
+                  onTap: widget.showRegisterScreen,
+                  child: Text(
+                    "Don't have an account? Register now",
+                    style: TextStyle(
+                      color: Colors.blue[700],
+                      fontSize: 16
+                  
+                    )),
+                )
             ],
       ),
         )
